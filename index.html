@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Опрос + Фото + Видео</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef6ff;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Модальное окно */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .yes { background: #4caf50; color: white; }
+        .no  { background: #d9534f; color: white; }
+
+        #result-img {
+            margin-top: 30px;
+            max-width: 400px;
+            display: none;
+        }
+
+        #video-block {
+            margin-top: 30px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ======= Мәтіндер видеонын үстінде ======= -->
+    <h1>Жұптық жұмыс Ашен Жансая & Түсіпқан Есімжан !</h1>
+    <h2>Питон</h2>
+    <h2>Үздік ЖЖ алатын видео:</h2>
+    <!-- ======================================== -->
+
+    <!-- Опрос -->
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <h3>Үздік ЖЖ алама?</h3>
+            <button class="yes" onclick="answer('yes')">Иә</button>
+            <button class="no" onclick="answer('no')">Жоқ</button>
+        </div>
+    </div>
+
+    <!-- Фото -->
+    <img id="result-img" src="" alt="">
+
+    <!-- Видео -->
+    <div id="video-block">
+        <video width="600" controls>
+            <source src="video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </div>
+
+    <script>
+        function answer(choice) {
+            let img = document.getElementById("result-img");
+
+            if (choice === "yes") {
+                img.src = "da.PNG";  // "Иә" суреті
+            } else {
+                img.src = "net.PNG"; // "Жоқ" суреті
+            }
+
+            img.style.display = "block";
+
+            // Опрос терезесін жасыру
+            document.getElementById("modal").style.display = "none";
+
+            // 2 секундтан кейін фотоны өшіріп, видеоны шығару
+            setTimeout(() => {
+                img.style.display = "none";
+                document.getElementById("video-block").style.display = "block";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
